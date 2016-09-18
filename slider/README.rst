@@ -17,7 +17,9 @@ Example code is in:
 API
 ---
 
-slider = Slider.create(divname, id, min_value, max_value, orient);
+::
+
+    slider = Slider.create(divname, id, min_value, max_value, orient);
 
 Create a slider object:
 
@@ -32,7 +34,7 @@ Create a slider object:
 
 ----
 
-slider.setValue(value);
+**slider.setValue(value);**
 
 ----
 
