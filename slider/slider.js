@@ -11,20 +11,20 @@ function init(){
 
 function startSlide(event){
 	var set_perc = ((((event.clientX - bar.offsetLeft) / bar.offsetWidth)).toFixed(2));
-	info.innerHTML = 'start: ' + set_perc*100 + '%';	
+	info.innerHTML = 'start: ' + Math.round(set_perc*100) + '%';	
 	bar.addEventListener('mousemove', moveSlide, false);	
 	slider.style.width = (set_perc * 100) + '%';	
 }
 
 function moveSlide(event){
 	var set_perc = ((((event.clientX - bar.offsetLeft) / bar.offsetWidth)).toFixed(2));
-	info.innerHTML = 'moving: ' + set_perc*100 + '%';
+	info.innerHTML = 'moving: ' + Math.round(set_perc*100) + '%';
 	slider.style.width = (set_perc * 100) + '%';
 }
 
 function stopSlide(event){
 	var set_perc = ((((event.clientX - bar.offsetLeft) / bar.offsetWidth)).toFixed(2));
-	info.innerHTML = 'done: ' + set_perc*100 + '%';
+	info.innerHTML = 'done: ' + Math.round(set_perc*100) + '%';
 	bar.removeEventListener('mousemove', moveSlide, false);
 	slider.style.width = (set_perc * 100) + '%';
 }
