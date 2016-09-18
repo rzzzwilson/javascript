@@ -34,16 +34,24 @@ Create a slider object:
 
 ----
 
-**slider.setValue(value);**
+::
+
+    slider.setValue(value);
 
 ----
 
-value = slider.getValue();
+::
+
+    value = slider.getValue();
 
 ----
 
-slider.onChange(action);
+::
 
-When the value of a slider changes, call the action function:
+    slider.onChange(action);
+
+When the value of a slider changes, call the action function like this:
+
+::
 
     action(id, value);
