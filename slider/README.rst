@@ -3,6 +3,8 @@ Slider
 
 Here we have code for a javascript slider:
 
+::
+
     slider.js    the slider javascript code
     slider.css   CSS for the slider
     slider.html  test page for the slider
@@ -18,6 +20,8 @@ API
 slider = Slider.create(divname, id, min_value, max_value, orient);
 
 Create a slider object:
+
+::
 
     divname    name of the enclosing <div> element
     id         an identifying string for the widget
