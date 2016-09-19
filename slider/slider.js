@@ -1,4 +1,6 @@
-var bar, slider;
+"use strict";
+
+var bar, slider, info;
 var leftButtonDown = false;
 
 function init() {
@@ -21,14 +23,13 @@ function mouseDown(event) {
 }
 
 function mouseMove(event) {
-	if (leftButtonDown)
-	{
+	if (leftButtonDown) {
 		var set_frac = ((((event.clientX - bar.offsetLeft) / bar.offsetWidth)).toFixed(2));
 		info.innerHTML = 'dragging: ' + Math.round(set_frac*100) + '%';
 		slider.style.width = (set_frac * 100) + '%';
 	}
 }
 
-function mouseUp(event){
+function mouseUp(event) {
 	leftButtonDown = (event.button == 2);
 }
