@@ -1,30 +1,34 @@
 var bar, slider;
+var leftButtonDown = false;
 
-function init(){
-	
+function init() {
 	bar = document.getElementById('bar');
 	slider = document.getElementById('slider');
 	info = document.getElementById('info');
-	bar.addEventListener('mousedown', startSlide, false);	
-	bar.addEventListener('mouseup', stopSlide, false);
+	bar.addEventListener('mousedown', mouseDown, false);
+	bar.addEventListener('mousemove', mouseMove, false);
+	bar.addEventListener('mouseup', mouseUp, false);
 }
 
-function startSlide(event){
-	var set_perc = ((((event.clientX - bar.offsetLeft) / bar.offsetWidth)).toFixed(2));
-	info.innerHTML = 'start: ' + Math.round(set_perc*100) + '%';	
-	bar.addEventListener('mousemove', moveSlide, false);	
-	slider.style.width = (set_perc * 100) + '%';	
+function mouseDown(event) {
+    leftButtonDown = (event.button == 0);
+
+    if (leftButtonDown) {
+    	var set_frac = ((((event.clientX - bar.offsetLeft) / bar.offsetWidth)).toFixed(2));
+    	info.innerHTML = 'set: ' + Math.round(set_frac*100) + '%';
+    	slider.style.width = (set_frac * 100) + '%';
+    }
 }
 
-function moveSlide(event){
-	var set_perc = ((((event.clientX - bar.offsetLeft) / bar.offsetWidth)).toFixed(2));
-	info.innerHTML = 'moving: ' + Math.round(set_perc*100) + '%';
-	slider.style.width = (set_perc * 100) + '%';
+function mouseMove(event) {
+	if (leftButtonDown)
+	{
+		var set_frac = ((((event.clientX - bar.offsetLeft) / bar.offsetWidth)).toFixed(2));
+		info.innerHTML = 'dragging: ' + Math.round(set_frac*100) + '%';
+		slider.style.width = (set_frac * 100) + '%';
+	}
 }
 
-function stopSlide(event){
-	var set_perc = ((((event.clientX - bar.offsetLeft) / bar.offsetWidth)).toFixed(2));
-	info.innerHTML = 'done: ' + Math.round(set_perc*100) + '%';
-	bar.removeEventListener('mousemove', moveSlide, false);
-	slider.style.width = (set_perc * 100) + '%';
+function mouseUp(event){
+	leftButtonDown = (event.button == 2);
 }
