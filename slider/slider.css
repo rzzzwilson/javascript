@@ -1,8 +1,9 @@
-#xyzzy{
-	width:200px;
+#alphabeta{
+	width:400px;
 	height:25px;
 	border:1px solid black;
 	position:relative;
+    cursor:pointer;
 }
 
 #info{
