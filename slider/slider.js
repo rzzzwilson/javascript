@@ -27,6 +27,8 @@ function init(slider_div_name) {
     slider_div.addEventListener('mousedown', mouseDown, false);
     slider_div.addEventListener('mousemove', mouseMove, false);
     slider_div.addEventListener('mouseup', mouseUp, false);
+
+    display_div.addEventListener('mouseout', mouseOut, false);
 }
 
 function mouseDown(event) {
@@ -36,9 +38,11 @@ function mouseDown(event) {
         info.innerHTML = 'set: ' + Math.round(set_frac*100) + '%';
         slider.style.width = (set_frac * 100) + '%';
     }
+//    console.log('mouseDown: leftButtonDown=' + leftButtonDown);
 }
 
 function mouseMove(event) {
+//    console.log('mouseMove: leftButtonDown=' + leftButtonDown);
     if (leftButtonDown) {
         var set_frac = ((((event.clientX - slider_div.offsetLeft) / slider_div.offsetWidth)).toFixed(2));
         info.innerHTML = 'dragging: ' + Math.round(set_frac*100) + '%';
@@ -47,5 +51,22 @@ function mouseMove(event) {
 }
 
 function mouseUp(event) {
-    leftButtonDown = (event.button == 2);
+    leftButtonDown = (leftButtonDown && (event.button != 0));
+//    console.log('mouseUp: leftButtonDown=' + leftButtonDown);
+}
+
+function mouseOut(event) {
+    // 'mouseout' event handler
+    var target = "unknown";
+    if (event.target == slider_div) target = 'slider_div';
+    if (event.target == display_div) target = 'display_div';
+    var related_target = "unknown";
+    if (event.relatedTarget == slider_div) related_target = 'slider_div';
+    if (event.relatedTarget == display_div) related_target = 'display_div';
+//    console.log('mouseOut: .target=' + target + ', .relatedTarget=' + related_target + ', leftButtonDown=' + leftButtonDown);
+
+    if ((event.relatedTarget != slider_div) && (event.relatedTarget != display_div)) {
+        leftButtonDown = false;
+    }
+//    console.log('mouseOut: event.relatedTarget=' + related_target + ', leftButtonDown=' + leftButtonDown);
 }
