@@ -1,7 +1,9 @@
 input[type=range] {
-    width: 100%;
     background: transparent;
-    border: double #CCFFCC 20px;
+}
+
+#test {
+    border:1px solid black;
 }
 
 #xyzzy{
