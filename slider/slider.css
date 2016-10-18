@@ -1,9 +1,18 @@
 input[type=range] {
+    width: 99%;
     background: transparent;
+    border:1px solid black;
+    box-sizing: border-box;
+    padding-top: 7px;
+    padding-right: 10px;
+    padding-bottom: 7px;
+    padding-left: 10px;
 }
 
 #test {
-    border:1px solid black;
+	width:400px;
+	height:35;
+    background: lightblue;
 }
 
 #xyzzy{
