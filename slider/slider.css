@@ -1,3 +1,9 @@
+input[type=range] {
+    width: 100%;
+    background: transparent;
+    border: double #CCFFCC 20px;
+}
+
 #xyzzy{
 	width:400px;
 	height:25px;
